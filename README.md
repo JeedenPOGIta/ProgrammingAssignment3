@@ -51,6 +51,17 @@ df.head()
 ```
 <br>
 
+SAMPLE OUTPUT:
+|    | Model             |   mpg |   cyl |   disp |   hp |   drat |    wt |   qsec |   vs |   am |   gear |   carb |
+|---:|:------------------|------:|------:|-------:|-----:|-------:|------:|-------:|-----:|-----:|-------:|-------:|
+|  0 | Mazda RX4         |  21   |     6 |    160 |  110 |   3.9  | 2.62  |  16.46 |    0 |    1 |      4 |      4 |
+|  1 | Mazda RX4 Wag     |  21   |     6 |    160 |  110 |   3.9  | 2.875 |  17.02 |    0 |    1 |      4 |      4 |
+|  2 | Datsun 710        |  22.8 |     4 |    108 |   93 |   3.85 | 2.32  |  18.61 |    1 |    1 |      4 |      1 |
+|  3 | Hornet 4 Drive    |  21.4 |     6 |    258 |  110 |   3.08 | 3.215 |  19.44 |    1 |    0 |      3 |      1 |
+|  4 | Hornet Sportabout |  18.7 |     8 |    360 |  175 |   3.15 | 3.44  |  17.02 |    0 |    0 |      3 |      2 |
+
+<br>
+
 b. Display the first five and last five rows of the resulting cars <br>
 
 
@@ -58,6 +69,15 @@ b. Display the first five and last five rows of the resulting cars <br>
 #Display last 5 rows of the data frame
 df.tail()
 ```
+
+SAMPLE OUTPUT:
+|    | Model          |   mpg |   cyl |   disp |   hp |   drat |    wt |   qsec |   vs |   am |   gear |   carb |
+|---:|:---------------|------:|------:|-------:|-----:|-------:|------:|-------:|-----:|-----:|-------:|-------:|
+| 27 | Lotus Europa   |  30.4 |     4 |   95.1 |  113 |   3.77 | 1.513 |   16.9 |    1 |    1 |      5 |      2 |
+| 28 | Ford Pantera L |  15.8 |     8 |  351   |  264 |   4.22 | 3.17  |   14.5 |    0 |    1 |      5 |      4 |
+| 29 | Ferrari Dino   |  19.7 |     6 |  145   |  175 |   3.62 | 2.77  |   15.5 |    0 |    1 |      5 |      6 |
+| 30 | Maserati Bora  |  15   |     8 |  301   |  335 |   3.54 | 3.57  |   14.6 |    0 |    1 |      5 |      8 |
+| 31 | Volvo 142E     |  21.4 |     4 |  121   |  109 |   4.11 | 2.78  |   18.6 |    1 |    1 |      4 |      2 |
 
 <br>
 
@@ -98,6 +118,14 @@ syntax is as follows:
 odd = df.iloc[:, [i for i in range(df.shape[1]) if i % 2 == 0]]
 odd.head()
 ```
+SAMPLE OUTPUT:
+|    | Model             |   cyl |   hp |    wt |   vs |   gear |
+|---:|:------------------|------:|-----:|------:|-----:|-------:|
+|  0 | Mazda RX4         |     6 |  110 | 2.62  |    0 |      4 |
+|  1 | Mazda RX4 Wag     |     6 |  110 | 2.875 |    0 |      4 |
+|  2 | Datsun 710        |     4 |   93 | 2.32  |    1 |      4 |
+|  3 | Hornet 4 Drive    |     6 |  110 | 3.215 |    1 |      3 |
+|  4 | Hornet Sportabout |     8 |  175 | 3.44  |    0 |      3 |
 
 <br>
 
@@ -107,10 +135,15 @@ Since the problem is asking to find a specific model of a car, I opted to use th
 With this, it was much easier for me to locate the said data as it only required me to find a specific 
 car in the 'Model' column. <br>
 
+SAMPLE OUTPUT:
+|    | Model     |   mpg |   cyl |   disp |   hp |   drat |   wt |   qsec |   vs |   am |   gear |   carb |
+|---:|:----------|------:|------:|-------:|-----:|-------:|-----:|-------:|-----:|-----:|-------:|-------:|
+|  0 | Mazda RX4 |    21 |     6 |    160 |  110 |    3.9 | 2.62 |  16.46 |    0 |    1 |      4 |      4 |
+
 <br>
 
 ```
-#Display ONLY the row that contains model of Mazda RX4
+#Display ONLY the row that contains model of Mazda RX4 - boolean indexing
 df.loc[df['Model']=='Mazda RX4']
 ```
 
@@ -122,10 +155,15 @@ the previous syntax gave me just that. So the syntax basically searched a 'Camar
 'Model' column and displayed only the 'cyl' because I specified it unlike the previous syntax 
 which displayed everything in the row because I did not specify anything. <br>
 
+SAMPLE OUTPUT:
+|    |   cyl |
+|---:|------:|
+| 23 |     8 |
+
 <br>
 
 ```
-#No. of cyl of Camaro Z28
+#No. of cyl of Camaro Z28 - boolean indexing
 df.loc[df['Model']=='Camaro Z28', ['cyl']]
 ```
 <br>
@@ -137,15 +175,28 @@ For this last part, I tried to use 'loc' in multiple ways. I first tried to use 
 "df.loc[df['Model']=='MazdaRX4', 'Ford Pantera L', 'Honda Civic', ['Model','cyl','gear']]" to no avail 
 it seems that the function cannot accept multiple strings to search for in the data frame. I think I 
 was trying to overcomplicate things. Hence, I opted to use simply loc the indexes of the models and 
-there specific 'cyl' and 'gear' for a quick view of the said models and their corresponding specs. 
+there specific 'cyl' and 'gear' for a quick view of the said models and their corresponding specs. <br>
+
+### UPDATE: 
+
+I found out that multiple indexes can be stored in a single variable. Hence, I changed my code into the
+following syntax: 
 
 <br>
 
 ```
-#No. of cyl and gear of specific models
-df.loc[[1,18,28], ['Model','cyl','gear']]
-```
+#No. of cyl and gear of specific models - store indexes into 1 variable and locate
+brooom = (df['Model']=='Mazda RX4 Wag')|(df['Model']=='Ford Pantera L')|(df['Model']=='Honda Civic')
 
+#Boolean Indexing
+df.loc[brooom, ['Model','cyl','gear']]
+```
+SAMPLE OUTPUT:
+|    | Model          |   cyl |   gear |
+|---:|:---------------|------:|-------:|
+|  1 | Mazda RX4 Wag  |     6 |      4 |
+| 18 | Honda Civic    |     4 |      4 |
+| 28 | Ford Pantera L |     8 |      5 |
 
 ### [TAKEAWAYS]
 
@@ -165,7 +216,10 @@ Version 1.0 - hardcoding "df.iloc[[0,1,2,3,],[1,3,5,7,9,11]]" to display the fir
 
 Version 1.1 - Use of for loop instead of hardcoding part A of problem 2. <br><br>
               * Much more efficient for larger-sized data frames <br>
-              * Automated -- hence, applicable to any data frame <br>
+              * Automated -- hence, applicable to any data frame <br><br>
+              
+Version 1.2 - Changed syntaxes for part D of problem no.2 <br>
+              * Multiple indexes can be stored in a variable hence, avoiding hardcoding <br>
             
 ## [END OF REPOSITORY]
 
