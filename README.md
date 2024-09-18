@@ -218,7 +218,7 @@ Version 1.1 - Use of for loop instead of hardcoding part A of problem 2. <br><br
               * Much more efficient for larger-sized data frames <br>
               * Automated -- hence, applicable to any data frame <br><br>
               
-Version 1.2 - Changed syntaxes for part D of problem no.2 <br>
+Version 1.2 - Changed syntaxes for part D of problem no.2 <br><br>
               * Multiple indexes can be stored in a variable hence, avoiding hardcoding <br>
             
 ## [END OF REPOSITORY]
