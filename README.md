@@ -32,7 +32,7 @@ save it as a data frame. I achieved this by using the following syntax: <br>
 <br>
 
 ```
-#Load the file into the code
+#Load the file into the code - assign it to a variable 'df'
 df = pd.read_csv("cars.csv")
 ```
 
@@ -99,7 +99,7 @@ Version 1.0 - "head()" and "tail()" functions to display <br><br>
 
 ## [PROBLEM 2]
 
-Using the same data frame in the first problem, we need to find the following:
+Using the same data frame and importing of pandas as pd in the first problem, we need to find the following:
 
 a. Display the first five rows with odd-numbered columns (columns 1, 3, 5, 7...) of cars. <br>
 
