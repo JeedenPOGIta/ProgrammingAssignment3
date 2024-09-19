@@ -42,7 +42,7 @@ For the next part of the problem, I can think of a lot of ways to do it such as 
 however, my concern for that is it seems too long of a code. That is where the "head()" 
 and "tail()" functions come in handy. The syntax of the following are as follows: <br><br>
 
-a. Load the corresponding .csv file into a data frame named cars using pandas <br>
+a. Display the first five rows of the resulting cars <br>
 
 
 ```
@@ -62,7 +62,7 @@ SAMPLE OUTPUT:
 
 <br>
 
-b. Display the first five and last five rows of the resulting cars <br>
+b. Display the last five rows of the resulting cars <br>
 
 
 ```
